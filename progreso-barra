@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Progreso Guardado</title>
+
+<style>
+    .container {
+        width: 90%;
+        background: #eee;
+        border-radius: 20px;
+        margin: 40px auto;
+        height: 30px;
+        overflow: hidden;
+    }
+
+    .bar {
+        height: 100%;
+        width: 0;
+        background: #4caf50;
+        transition: width 0.5s ease-in-out;
+    }
+
+    button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 18px;
+        border: none;
+        border-radius: 10px;
+        background: #2196F3;
+        color: white;
+        cursor: pointer;
+    }
+</style>
+
+</head>
+<body>
+
+<h2 style="text-align:center;">Progreso</h2>
+
+<div class="container">
+    <div id="progressBar" class="bar"></div>
+</div>
+
+<button onclick="guardarProgreso()">TERMINO</button>
+
+<script>
+    let saved = localStorage.getItem("progresoGuardado");
+    let progresoActual = saved ? Number(saved) : 40;
+
+    const bar = document.getElementById("progressBar");
+    bar.style.width = progresoActual + "%";
+
+    function guardarProgreso() {
+        progresoActual = 100;
+        bar.style.width = "100%";
+        localStorage.setItem("progresoGuardado", 100);
+    }
+</script>
+
+</body>
+</html>
